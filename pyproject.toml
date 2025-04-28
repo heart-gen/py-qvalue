@@ -18,9 +18,9 @@ dependencies = [
 keywords = [ "statistics", "q-value", "biostatistics" , "R ports" . "FDR" ]
 
 [project.urls]
-homepage = ""
-repository = ""
-"Bug Tracker" = ""
+homepage = "https://github.com/heart-gen/py-qvalue"
+repository = "https://github.com/heart-gen/py-qvalue"
+"Bug Tracker" = "https://github.com/heart-gen/py-qvalue/issues"
 
 [tool.poetry]
 packages = [{include = "py_qvalue", from = "src"}]
