@@ -15,7 +15,7 @@ dependencies = [
     "numpy>=2.0",
     "scipy>=1.15",
 ]
-keywords = [ "statistics", "q-value", "biostatistics" , "R ports" . "FDR" ]
+keywords = [ "statistics", "q-value", "biostatistics" , "R ports" , "FDR" ]
 
 [project.urls]
 homepage = "https://github.com/heart-gen/py-qvalue"
