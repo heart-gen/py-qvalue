@@ -107,5 +107,5 @@ a pull request on the GitHub repository.
 
 ## License
 
-This project is licensed under the GPL 3 License. See the `LICENSE` file for
+This project is licensed under the GPL v3 License. See the `LICENSE` file for
 details.
