@@ -30,7 +30,7 @@ q-values from a set of p-values:
 
 ```python
 import numpy as np
-from py_qvalue.core import qvalue
+from py_qvalue import qvalue
 
 # Parameters
 n_tests = 1000
@@ -80,7 +80,7 @@ As a port of `qvalue`, we use the same core functions includes:
 Users can import `qvalue` and `pi0est` from this package.
 
 ``` python
-from qvalue import pi0est, qvalue
+from py_qvalue import pi0est, qvalue
 ```
 
 ## Relationship to the R `qvalue` Package
