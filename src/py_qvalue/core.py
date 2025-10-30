@@ -119,10 +119,13 @@ def pi0est(p: np.ndarray, lambda_: Optional[np.ndarray] = None,
         lambda_ = np.arange(0.05, 0.96, 0.05)
 
     m = len(p)
-    pi0 = np.zeros_like(lambda_)
+    pi0 = np.zeros_like(lambda_, dtype=float)
 
     for i, l in enumerate(lambda_):
         pi0[i] = np.mean(p >= l) / (1 - l)
+
+    pi0_lambda = np.minimum(pi0.copy(), 1.0)
+    pi0_smooth: Optional[np.ndarray] = None
 
     if pi0_method == "smoother":
         if smooth_log_pi0:
@@ -134,20 +137,20 @@ def pi0est(p: np.ndarray, lambda_: Optional[np.ndarray] = None,
         if smooth_log_pi0:
             pi0_smooth = np.exp(pi0_smooth)
 
-        pi0 = np.minimum(1, pi0_smooth[-1])
+        pi0_value = float(np.minimum(1, pi0_smooth[-1]))
     elif pi0_method == "bootstrap":
         min_pi0 = np.min(pi0)
         W = np.array([np.sum(p >= l) for l in lambda_])
         mse = (W / (m**2 * (1 - lambda_)**2)) * (1 - W/m) + (pi0 - min_pi0)**2
-        pi0 = min(1, pi0[np.argmin(mse)])
+        pi0_value = float(min(1, pi0[np.argmin(mse)]))
     else:
         raise ValueError("pi0_method must be 'smoother' or 'bootstrap'")
 
     return {
-        'pi0': pi0,
-        'pi0_lambda': pi0,
+        'pi0': pi0_value,
+        'pi0_lambda': pi0_lambda,
         'lambda': lambda_,
-        'pi0_smooth': pi0_smooth if pi0_method == "smoother" else None
+        'pi0_smooth': pi0_smooth
     }
 
 
