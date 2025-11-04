@@ -93,7 +93,7 @@ def qvalue(p: np.ndarray, fdr_level: Optional[float] = None, pfdr: bool = False,
 
 
 def pi0est(p: np.ndarray, lambda_: Optional[np.ndarray] = None,
-           pi0_method: str = "smoother", smooth_df: int = 3,
+           pi0_method: str = "bootstrap", smooth_df: int = 3,
            smooth_log_pi0: bool = False, **kwargs) -> Dict[str, Any]:
     """
     Estimate the proportion of true null hypotheses (pi0).
